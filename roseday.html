@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Day for Vasu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ffebee 0%, #fce4ec 100%);
+            color: #880e4f;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        header {
+            padding: 40px 20px;
+            position: relative;
+        }
+        
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart {
+            position: absolute;
+            color: #ff4081;
+            font-size: 20px;
+            opacity: 0.7;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(20deg); }
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: #d81b60;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .name {
+            color: #880e4f;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 3px 3px 0 #ffcdd2;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: #ad1457;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .rose-container {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin: 40px auto;
+        }
+        
+        .rose-svg {
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+            animation: floatRose 6s infinite ease-in-out;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .rose-svg:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes floatRose {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+        
+        .message-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .message-box h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #d81b60;
+        }
+        
+        .message {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            text-align: left;
+            margin-bottom: 30px;
+            color: #4a148c;
+        }
+        
+        .message p {
+            margin-bottom: 20px;
+        }
+        
+        .signature {
+            text-align: right;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: #d81b60;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+        
+        .roses-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .small-rose {
+            width: 100px;
+            height: 120px;
+            background: radial-gradient(circle at 30% 30%, #ff4081, #f50057);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .small-rose:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .counter {
+            font-size: 1.5rem;
+            margin-top: 30px;
+            color: #ad1457;
+            font-weight: bold;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 1.2rem;
+            color: #880e4f;
+            border-top: 2px dashed #f48fb1;
+        }
+        
+        .music-btn {
+            background-color: #d81b60;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto;
+        }
+        
+        .music-btn:hover {
+            background-color: #ad1457;
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .name { font-size: 3rem; }
+            .subtitle { font-size: 1.4rem; }
+            .message-box { padding: 25px; }
+            .message { font-size: 1.2rem; }
+            .rose-container { transform: scale(0.8); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="hearts" id="hearts-container"></div>
+            <h1>Happy Rose Day</h1>
+            <div class="name">VASUuuuuu</div>
+            <div class="subtitle">Each rose reminds me of your beautyy and lovee</div>
+            
+            <div class="rose-container">
+                <svg class="rose-svg" viewBox="0 0 200 200" width="300" height="300">
+                    <path d="M100,50 C80,30 60,40 50,60 C40,80 45,100 60,110 C75,120 90,115 100,105 C110,115 125,120 140,110 C155,100 160,80 150,60 C140,40 120,30 100,50 Z" 
+                          fill="#ff4081" stroke="#d81b60" stroke-width="2"/>
+                    <path d="M100,65 C85,50 70,55 65,70 C60,85 65,95 75,100 C85,105 95,100 100,95 C105,100 115,105 125,100 C135,95 140,85 135,70 C130,55 115,50 100,65 Z" 
+                          fill="#ff79b0" stroke="#ff4081" stroke-width="1.5"/>
+                    <path d="M100,75 C90,65 80,70 78,80 C76,90 80,95 85,97 C90,99 95,97 100,94 C105,97 110,99 115,97 C120,95 124,90 122,80 C120,70 110,65 100,75 Z" 
+                          fill="#ffb6d9" stroke="#ff79b0" stroke-width="1"/>
+                    <circle cx="100" cy="85" r="10" fill="#ffff00" stroke="#ff9800" stroke-width="1.5"/>
+                    <circle cx="100" cy="85" r="6" fill="#ffd600" stroke="#ff9800" stroke-width="1"/>
+                    <rect x="97" y="120" width="6" height="80" fill="#2e7d32" stroke="#1b5e20" stroke-width="1"/>
+                  \  <path d="M103,150 C115,145 120,130 110,125 C100,120 95,135 103,150 Z" 
+                          fill="#4caf50" stroke="#2e7d32" stroke-width="1"/>
+                    <path d="M103,170 C115,175 120,190 110,195 C100,200 95,185 103,170 Z" 
+                          fill="#4caf50" stroke="#2e7d32" stroke-width="1"/>
+                </svg>
+            </div>
+            
+            <button class="music-btn" id="poemBtn">
+                <i class="fas fa-kiss-wink-heart"></i> Wanna see who's inside this flower
+            </button>
+        </header>
+        
+        <section class="message-box">
+            <h2>My Dearest Vasuuuu babbbbuuuu <i class="fas fa-heart" style="color:#d81b60;"></i></h2>
+            <div class="message">
+                <p>On this special Rose Day, I want to open my heart and tell you what you truly mean to me Just like every rose carries its own fragrance and charm, you hold a place in my heart that no one else could ever replace You are not just a part of my life, you are the reason my world feels complete
+Each petal of this rose carries a reason why I love you Your smile that instantly brightens my darkest days, your kindness that makes the world softer, your laughter that feels like music to my soul, your strength that inspires me, and the beautiful heart that makes you you Loving you feels as natural as breathing
+Since the day you came into my life, everything feels more colorful more meaningful like a garden that suddenly bloomed after the first rain You’ve filled my days with warmth, my nights with comfort, and my heart with a happiness I never knew existed Every moment with you is a memory I cherish, and every second apart makes me realize how deeply you matter to me
+With you, love isn’t just a feeling it’s a promise, a journey and a dream I want to live every day I look forward to countless Rose Days with you, where our love continues to grow, deepen, and blossom into something even more beautiful with time
+May our love always bloom like the most enchanting rose garden strong, timeless, and endlessly beautiful becoming richer and more magical with each passing day.</p> 
+
+<p>Gulab sirf phool nahi, ek ehsaas hai,
+Jaise tum sirf meri nahi, meri har saans ho
+Tum saath ho toh zindagi mehakti rehti hai,
+Warna khushboo bhi jaise khamosh ho</p>
+Tere ishq mein har din gulaab sa lagta hai,
+Teri muskaan se har lamha khwaab sa lagta hai.
+Tum ho toh duniya haseen lagti hai,
+Warna yeh dil bhi tanha sa lagta hai<i class="fas fa-heart" style="color:#d81b60;"></i></p></div>
+            
+            <div class="signature">With all my love,<br>Your baaaabbuuuuu <i class="fas fa-heart" style="color:#d81b60;"></i></div>
+        </section>
+        
+        <section class="roses-grid" id="rosesGrid">
+        </section>
+        
+        <div class="counter">
+            Roses for you: <span id="roseCount">0</span>
+        </div>
+        
+        <footer class="footer">
+            <p>Made with <i class="fas fa-heart" style="color:#d81b60;"></i> for Vasu by urrrr pyaara sa chotaaaa saa bauaaaa</p>
+            <p>Every rose is a reminder of my love for you</p>
+        </footer>
+    </div>
+
+
+   <script>
+        const heartsContainer = document.getElementById('hearts-container');
+        for (let i = 0; i < 30; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '<i class="fas fa-heart"></i>';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+            heartsContainer.appendChild(heart);
+        }
+        const rosesGrid = document.getElementById('rosesGrid');
+        const roseCountElement = document.getElementById('roseCount');
+        let roseCount = 0;
+        
+        for (let i = 0; i < 12; i++) {
+            const rose = document.createElement('div');
+            rose.className = 'small-rose';
+            const colors = ['#ff4081', '#f50057', '#d81b60', '#c2185b', '#ad1457'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            rose.style.background = `radial-gradient(circle at 30% 30%, ${color}, ${color}dd)`;
+            
+            rose.addEventListener('click', () => {
+                roseCount++;
+                roseCountElement.textContent = roseCount;
+                const floatingRose = rose.cloneNode(true);
+                floatingRose.style.position = 'fixed';
+                floatingRose.style.top = '80vh';
+                floatingRose.style.left = Math.random() * 80 + 10 + 'vw';
+                floatingRose.style.zIndex = '1000';
+                floatingRose.style.transform = 'scale(1.5)';
+                document.body.appendChild(floatingRose);
+                const animation = floatingRose.animate([
+                    { top: '80vh', opacity: 1 },
+                    { top: '10vh', opacity: 0 }
+                ], {
+                    duration: 2000,
+                    easing: 'ease-out'
+                });
+                
+                animation.onfinish = () => {
+                    document.body.removeChild(floatingRose);
+                };
+            });
+            
+            rosesGrid.appendChild(rose);
+        }
+        const poemBtn = document.getElementById('poemBtn');
+        poemBtn.addEventListener('click', () => {
+            createPoemPage();
+        });
+
+        function createPoemPage() {
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.7);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10000;
+                backdrop-filter: blur(5px);
+            `;
+            const letter = document.createElement('div');
+            letter.style.cssText = `
+                background: #fff8e1;
+                width: 90%;
+                max-width: 800px;
+                min-height: 600px;
+                padding: 40px;
+                border-radius: 5px;
+                position: relative;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                font-family: 'Courier New', Courier, monospace;
+                overflow: hidden;
+            `;
+            
+            const tornEdge = document.createElement('div');
+            tornEdge.style.cssText = `
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 50px;
+                height: 100%;
+                background: linear-gradient(45deg, transparent 0%, transparent 45%, #fff8e1 45%, #fff8e1 55%, transparent 55%);
+            `;
+            
+            const stain1 = document.createElement('div');
+            stain1.style.cssText = `
+                position: absolute;
+                top: 100px;
+                left: 50px;
+                width: 60px;
+                height: 60px;
+                background: rgba(139, 69, 19, 0.1);
+                border-radius: 50%;
+                filter: blur(5px);
+            `;
+            
+            const stain2 = document.createElement('div');
+            stain2.style.cssText = `
+                position: absolute;
+                bottom: 150px;
+                right: 80px;
+                width: 40px;
+                height: 40px;
+                background: rgba(139, 69, 19, 0.08);
+                border-radius: 50%;
+                filter: blur(3px);
+            `;
+        
+            letter.innerHTML = `
+                <div style="text-align: center; margin-bottom: 30px;">
+    <div style="font-size: 2.5rem; color: #8b0000; margin-bottom: 10px;">❤️</div>
+    <div style="font-size: 1.5rem; color: #8b0000; text-decoration: underline; margin-bottom: 20px;">
+        A Letter for babu 
+    </div>
+    <div style="font-size: 0.9rem; color: #5d4037; font-style: italic;">
+        meri dil ki baatein on this special day
+    </div>
+</div>
+
+<div style="padding: 0 20px;">
+    <div style="font-size: 1.3rem; line-height: 1.8; color: #4e342e; margin-bottom: 25px; text-align: center;">
+        <p style="margin-bottom: 15px; font-weight: bold;">Meri pyaari Vasu,</p>
+        
+        <div style="text-align: left; font-size: 1.1rem;">
+            <p style="margin-bottom: 15px; text-indent: 20px;">
+                Ye phool kya, iss dil ke andar sirf tum ho,<br>
+                Har dhadkan mein, har khayal mein sirf tum ho.
+            </p>
+
+            <p style="margin-bottom: 15px; text-indent: 20px;">
+                Tumhari muskaan meri subah hai,<br>
+                Tumhari baatein meri shaam,<br>
+                Aur tumhara saath woh dua hai,<br>
+                Jo har pal qubool hoti lagti hai.
+            </p>
+
+            <p style="margin-bottom: 15px; text-indent: 20px;">
+                Tum aaye toh zindagi rangon se bhar gayi,<br>
+                Har khamoshi ek pyaari si kahaani ban gayi.<br>
+                Tum ho toh har mushkil aasaan lagti hai,<br>
+                Har raasta apna sa lagta hai.
+            </p>
+
+           
+
+            <p style="margin-bottom: 15px; text-indent: 20px;">
+                Dua hai ki hamara pyaar bhi is gulaab ki tarah ho,<br>
+                Khoobsurat, mehakta hua, aur hamesha zinda.<br>
+                Aaj, kal, aur har aane wale kal mein,<br>
+                Sirf tum… aur sirf hum.
+            </p>
+        </div>
+    </div>
+</div>
+
+                        
+                        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px dashed #8b0000;">
+                            <p style="font-style: italic; color: #5d4037; margin-bottom: 10px;">
+                                With each rose that blooms, I'm reminded<br>
+                                Of how my love for you has been redefined.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: right; margin-top: 50px;">
+                        <div style="font-size: 1.2rem; color: #8b0000; font-weight: bold;">
+                            Forever Yours,
+                        </div>
+                        <div style="font-size: 1.1rem; color: #5d4037; font-style: italic;">
+                            Your Secret Admirer
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="writeYourOwn" style="
+                    background: #8b0000;
+                    color: white;
+                    border: none;
+                    padding: 10px 25px;
+                    font-size: 1rem;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    margin-top: 40px;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    font-family: 'Courier New', Courier, monospace;
+                    transition: all 0.3s;
+                ">Write Your Own Poem Here</button>
+                
+                <textarea id="poemInput" placeholder="Write your own love poem for Vasu here..." style="
+                    width: 100%;
+                    height: 150px;
+                    margin-top: 20px;
+                    padding: 15px;
+                    font-family: 'Courier New', Courier, monospace;
+                    font-size: 1rem;
+                    border: 1px dashed #8b0000;
+                    background: rgba(255, 248, 225, 0.8);
+                    display: none;
+                    color: #4e342e;
+                "></textarea>
+                
+                <button id="closeLetter" style="
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    color: #8b0000;
+                    cursor: pointer;
+                ">×</button>
+            `;
+            letter.appendChild(tornEdge);
+            letter.appendChild(stain1);
+            letter.appendChild(stain2);
+            overlay.appendChild(letter);
+            
+            document.body.appendChild(overlay);
+            document.getElementById('closeLetter').addEventListener('click', () => {
+                document.body.removeChild(overlay);
+            });
+            
+            document.getElementById('writeYourOwn').addEventListener('click', () => {
+                const textarea = document.getElementById('poemInput');
+                const button = document.getElementById('writeYourOwn');
+                if (textarea.style.display === 'none' || textarea.style.display === '') {
+                    textarea.style.display = 'block';
+                    button.textContent = 'Save Poem';
+                    textarea.focus();
+                } else {
+                    button.textContent = 'Poem Saved!';
+                    setTimeout(() => {
+                        button.textContent = 'Write Your Own Poem Here';
+                        textarea.style.display = 'none';
+                    }, 1500);
+                }
+            });
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    document.body.removeChild(overlay);
+                }
+            });
+        }
+        let count = 0;
+        const targetCount = 99;
+        const countInterval = setInterval(() => {
+            if (count < targetCount) {
+                count++;
+                roseCountElement.textContent = count;
+            } else {
+                clearInterval(countInterval);
+            }
+        }, 30);
+    </script>
+</body>
+</html>
